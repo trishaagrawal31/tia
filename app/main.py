@@ -4,6 +4,7 @@ from fastapi import FastAPI
 
 from app.database import Base, engine
 from app.routers import users, tia_profiles, projects, tasks, conversations, streaks, badges
+from app.routers import auth
 
 # Import all models so Base.metadata knows about every table
 import app.models  # noqa: F401
@@ -26,6 +27,7 @@ app.include_router(tasks.router, prefix="/api")
 app.include_router(conversations.router, prefix="/api")
 app.include_router(streaks.router, prefix="/api")
 app.include_router(badges.router, prefix="/api")
+app.include_router(auth.router, prefix="/api")
 
 
 @app.get("/health")
